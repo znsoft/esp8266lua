@@ -1,9 +1,13 @@
-    print('Uploading...\n')   
+    print('Uploading...\n') 
     local _,_,boundary = request:find("boundary=([%S]+)");
     local x,y = request:find("\r\n\r\n");
-    local _POST = {}
+    _POST = {}
     local name=""
     print(request)
+    print('<br>'..node.heap())
+    local r,u,t=file.fsinfo() print("<br>\r\nTotal : "..t.." bytes\r\nUsed  : "..u.." bytes\r\nRemain: "..r.." bytes\r\n") r=nil u=nil t=nil
+    conn:close();
+    conn = nil
     if (boundary ~= nil and x ~= nil) then
         boundary = "--" .. boundary
             while(true) do  
@@ -14,23 +18,11 @@
                 request = request:sub(y)
                 x,y = request:find(boundary)
                 if(x == nil) then break end
-                local val = request:sub(1,x-1)
+                local val = request:sub(2,x-3)
                 if(val == nil) then break end
-                _POST[name] = val 
+                _POST[name] = val
             end 
      end       
     request = nil
-    if (_POST.filename ~= nil and _POST.text ~= nil) then
-        file.remove(_POST.filename);
-        file.open(_POST.filename, "w+")
-        file.write(_POST.text)
-        file.flush()
-        file.close()
-        print(_POST.filename..' Done!')   
+    collectgarbage()
         
-    end
-    _POST = nil name = nil
-    print('<br>'..node.heap())
-        print('</html>')   
-        collectgarbage()
-        conn:close();
