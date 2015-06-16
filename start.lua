@@ -13,3 +13,4 @@ gpio.trig(Input, "down",function (level)
         tmr.delay(701000)
      end
   end)
+  dofile("state.lua")

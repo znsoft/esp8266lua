@@ -12,9 +12,5 @@ button {
 <title>ON/OFF Light</title></head>
 <body>
 <div><a href="OFF"><button>OFF</button></a>
-</div>turn off after:
-<a href="SETOFF/30">30 min </a>
-<a href="SETOFF/60">1 hr </a>
-<a href="SETOFF/120">2 hr </a>
-<a href="SETOFF/240">4 hr </a>
-<a href="SETOFF/480">8 hr </a><br>
+</div>
+</p> </body></html>

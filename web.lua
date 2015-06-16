@@ -18,8 +18,8 @@ srv:listen(80,function(con)
              request = nil
              collectgarbage();
       end)
-    con:on("disconnection",function(con) 
-        node.output(nil) 
-      end)
+   -- con:on("disconnection",function(con) 
+     --   node.output(nil) 
+     -- end)
 
 end)
